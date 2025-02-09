@@ -55,39 +55,45 @@ const Index = () => {
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
       
-      <main className="container mx-auto pt-28 px-4 flex-1">
-        <section className="text-center max-w-4xl mx-auto mb-12">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">News and insights</h1>
-          <p className="text-lg text-muted-foreground mb-8">
-            Learn about cryptocurrency, NFTs, and blockchain. Discover our latest market updates,
-            trading strategies, and financial insights.
-          </p>
-          <div className="flex flex-wrap justify-center gap-3">
-            {CATEGORIES.map((category) => (
-              <button
-                key={category}
-                className="px-4 py-2 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
-              >
-                {category}
-              </button>
-            ))}
-          </div>
-        </section>
-
-        <section className="mb-16 fade-in">
-          <HeroPost {...FEATURED_POST} />
-        </section>
-
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Latest Posts</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {RECENT_POSTS.map((post, index) => (
-              <div key={post.slug} className="fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
-                <BlogCard {...post} />
+      <main className="flex-1">
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+          <section className="py-20 md:py-28">
+            <div className="max-w-3xl mx-auto text-center mb-12">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+                News and insights
+              </h1>
+              <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
+                Learn about cryptocurrency, NFTs, and blockchain. Discover our latest market updates,
+                trading strategies, and financial insights.
+              </p>
+              <div className="flex flex-wrap justify-center gap-3">
+                {CATEGORIES.map((category) => (
+                  <button
+                    key={category}
+                    className="px-4 py-2 rounded-full bg-secondary hover:bg-secondary/80 transition-colors text-sm font-medium"
+                  >
+                    {category}
+                  </button>
+                ))}
               </div>
-            ))}
-          </div>
-        </section>
+            </div>
+          </section>
+
+          <section className="mb-20 fade-in max-w-6xl mx-auto">
+            <HeroPost {...FEATURED_POST} />
+          </section>
+
+          <section className="mb-20 max-w-7xl mx-auto">
+            <h2 className="text-3xl font-bold mb-10 text-center">Latest Posts</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+              {RECENT_POSTS.map((post, index) => (
+                <div key={post.slug} className="fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <BlogCard {...post} />
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
       </main>
 
       <Footer />
@@ -96,3 +102,4 @@ const Index = () => {
 };
 
 export default Index;
+
