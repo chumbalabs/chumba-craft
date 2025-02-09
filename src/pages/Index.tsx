@@ -52,13 +52,13 @@ const CATEGORIES = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="flex-1">
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+      <main className="pt-16">
+        <div className="max-w-[1920px] mx-auto">
           <section className="py-20 md:py-28">
-            <div className="max-w-3xl mx-auto text-center mb-12">
+            <div className="max-w-3xl mx-auto text-center mb-12 px-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
                 News and insights
               </h1>
@@ -79,13 +79,15 @@ const Index = () => {
             </div>
           </section>
 
-          <section className="mb-20 fade-in max-w-6xl mx-auto">
-            <HeroPost {...FEATURED_POST} />
+          <section className="mb-20 fade-in px-4">
+            <div className="max-w-[1440px] mx-auto">
+              <HeroPost {...FEATURED_POST} />
+            </div>
           </section>
 
-          <section className="mb-20 max-w-7xl mx-auto">
+          <section className="mb-20 max-w-7xl mx-auto px-4">
             <h2 className="text-3xl font-bold mb-10 text-center">Latest Posts</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {RECENT_POSTS.map((post, index) => (
                 <div key={post.slug} className="fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                   <BlogCard {...post} />
@@ -102,4 +104,3 @@ const Index = () => {
 };
 
 export default Index;
-
