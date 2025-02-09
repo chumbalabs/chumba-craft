@@ -39,12 +39,40 @@ const RECENT_POSTS = [
   },
 ];
 
+const CATEGORIES = [
+  "All",
+  "Crypto",
+  "Blockchain",
+  "Forex",
+  "Stocks",
+  "NFT",
+  "Trading",
+];
+
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
       
-      <main className="container mx-auto pt-24 px-4">
+      <main className="container mx-auto pt-28 px-4">
+        <section className="text-center max-w-4xl mx-auto mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6">News and insights</h1>
+          <p className="text-lg text-muted-foreground mb-8">
+            Learn about cryptocurrency, NFTs, and blockchain. Discover our latest market updates,
+            trading strategies, and financial insights.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {CATEGORIES.map((category) => (
+              <button
+                key={category}
+                className="px-4 py-2 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </section>
+
         <section className="mb-16 fade-in">
           <HeroPost {...FEATURED_POST} />
         </section>
