@@ -1,5 +1,6 @@
 
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import HeroPost from "@/components/HeroPost";
 import BlogCard from "@/components/BlogCard";
 
@@ -51,10 +52,10 @@ const CATEGORIES = [
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
       <Header />
       
-      <main className="container mx-auto pt-28 px-4">
+      <main className="container mx-auto pt-28 px-4 flex-1">
         <section className="text-center max-w-4xl mx-auto mb-12">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">News and insights</h1>
           <p className="text-lg text-muted-foreground mb-8">
@@ -88,6 +89,8 @@ const Index = () => {
           </div>
         </section>
       </main>
+
+      <Footer />
     </div>
   );
 };
