@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroPost from "@/components/HeroPost";
 import BlogCard from "@/components/BlogCard";
+import { useState } from "react";
 
 const FEATURED_POST = {
   title: "The Future of Cryptocurrency: What to Expect in 2024",
@@ -51,26 +52,33 @@ const CATEGORIES = [
 ];
 
 const Index = () => {
+  const [activeCategory, setActiveCategory] = useState("All");
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
       
       <main className="pt-16">
         <div className="max-w-[1920px] mx-auto">
-          <section className="py-20 md:py-28">
-            <div className="max-w-3xl mx-auto text-center mb-12 px-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
+          <section className="py-16 md:py-20">
+            <div className="max-w-2xl mx-auto text-center mb-10 px-4">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-purple-600">
                 News and insights
               </h1>
-              <p className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto">
+              <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
                 Learn about cryptocurrency, NFTs, and blockchain. Discover our latest market updates,
                 trading strategies, and financial insights.
               </p>
-              <div className="flex flex-wrap justify-center gap-3">
+              <div className="flex flex-wrap justify-center gap-2">
                 {CATEGORIES.map((category) => (
                   <button
                     key={category}
-                    className="px-4 py-2 rounded-full bg-secondary hover:bg-secondary/80 transition-colors text-sm font-medium"
+                    onClick={() => setActiveCategory(category)}
+                    className={`px-4 py-1.5 rounded-full text-sm font-medium transition-colors ${
+                      activeCategory === category
+                        ? "bg-blue-600 text-white"
+                        : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+                    }`}
                   >
                     {category}
                   </button>
@@ -79,15 +87,15 @@ const Index = () => {
             </div>
           </section>
 
-          <section className="mb-20 fade-in px-4">
+          <section className="mb-16 fade-in px-4">
             <div className="max-w-[1440px] mx-auto">
               <HeroPost {...FEATURED_POST} />
             </div>
           </section>
 
           <section className="mb-20 max-w-7xl mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-10 text-center">Latest Posts</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <h2 className="text-2xl font-bold mb-8">Latest Posts</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {RECENT_POSTS.map((post, index) => (
                 <div key={post.slug} className="fade-in" style={{ animationDelay: `${index * 0.1}s` }}>
                   <BlogCard {...post} />
